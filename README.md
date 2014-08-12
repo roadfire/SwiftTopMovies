@@ -1,7 +1,7 @@
 SwiftTopMovies
 ==============
 
-A Swift app to lists the top movies from the iTunes RSS feed. UITableView, NSURLSession, NSJSONSerialization, closures, optionals, and fun. :)
+A Swift app to list the top movies from the iTunes RSS feed. UITableView, NSURLSession, NSJSONSerialization, closures, optionals, and fun. :)
 
 ![](screenshot.png)
 
