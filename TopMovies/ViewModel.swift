@@ -9,13 +9,13 @@
 import Foundation
 
 class ViewModel {
-    let url = NSURL(string: "https://itunes.apple.com/us/rss/topmovies/limit=25/json")
+    let urlString = "https://itunes.apple.com/us/rss/topmovies/limit=25/json"
     var titles = [String]()
-    lazy var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 
     func fetchTitles(success:() -> ()) {
-        let task = session.dataTaskWithURL(url,
-            completionHandler: { (data, response, error) -> Void in
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let url = NSURL(string: urlString)
+        let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
                 var error: NSError?
                 let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error) as NSDictionary
                 
@@ -23,7 +23,7 @@ class ViewModel {
                 
                 success()
 
-            })
+            }
         task.resume()
     }
 
