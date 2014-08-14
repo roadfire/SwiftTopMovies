@@ -11,19 +11,21 @@ import Foundation
 class ViewModel {
     let urlString = "https://itunes.apple.com/us/rss/topmovies/limit=25/json"
     var titles = [String]()
-
+    
     func fetchTitles(success:() -> ()) {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         let url = NSURL(string: urlString)
         let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
-                var error: NSError?
-                let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error) as NSDictionary
-                
+            var jsonError: NSError?
+            let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as NSDictionary
+            
+            if let unwrappedError = jsonError {
+                println("json error: \(unwrappedError)")
+            } else {
                 self.titles = json.valueForKeyPath("feed.entry.im:name.label") as [String]
-                
                 success()
-
             }
+        }
         task.resume()
     }
 
