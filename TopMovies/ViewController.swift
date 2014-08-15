@@ -10,15 +10,22 @@ import UIKit
 
 class ViewController: UITableViewController {
     
-    let viewModel = ViewModel()
-                            
+    let viewModel: ViewModel
+    
+    required init(coder aDecoder: NSCoder!) {
+        viewModel = ViewModel(titles)
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchTitles {
-            dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
-            }
-        }
+        
+        
+//        viewModel.fetchTitles {
+//            dispatch_async(dispatch_get_main_queue()) {
+//                self.tableView.reloadData()
+//            }
+//        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
