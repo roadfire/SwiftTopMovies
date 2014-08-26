@@ -11,12 +11,6 @@ import TopMovies
 
 class JSONParserTests: XCTestCase {
     
-    lazy var filePath: String = {
-        let bundle = NSBundle(forClass: JSONParserTests.self)
-        let path = bundle.pathForResource("topmovies", ofType: "json")
-        return path!
-    }()
-    
     let parser = JSONParser()
     
     override func setUp() {
@@ -28,7 +22,9 @@ class JSONParserTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testParseExpectedJSON() {
+        let filePath = NSBundle(forClass: JSONParserTests.self).pathForResource("topmovies", ofType: "json")!
+        
         var error: NSError?
         let json = NSData.dataWithContentsOfFile(filePath, options: nil, error: &error)
         let titles = parser.titlesFromJSON(json)
@@ -36,5 +32,26 @@ class JSONParserTests: XCTestCase {
         
         XCTAssert(titles[0] == "Godzilla (2014)")
     }
+    
+    func testParseEmptyJSON() {
+        let filePath = NSBundle(forClass: JSONParserTests.self).pathForResource("topmovies-empty", ofType: "json")!
+        var error: NSError?
+        let json = NSData.dataWithContentsOfFile(filePath, options: nil, error: &error)
+        let titles = parser.titlesFromJSON(json)
+        XCTAssert(titles.count == 0)
         
+        let badTitles = parser.badTitlesFromJSON(json)
+        XCTAssert(badTitles.count == 0)
+    }
+    
+    func testParseEmptyFeed() {
+        let filePath = NSBundle(forClass: JSONParserTests.self).pathForResource("topmovies-empty-feed", ofType: "json")!
+        var error: NSError?
+        let json = NSData.dataWithContentsOfFile(filePath, options: nil, error: &error)
+        let titles = parser.titlesFromJSON(json)
+        XCTAssert(titles.count == 0)
+
+        let badTitles = parser.badTitlesFromJSON(json)
+        XCTAssert(badTitles.count == 0)
+    }
 }

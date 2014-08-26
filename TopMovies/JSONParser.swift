@@ -13,11 +13,8 @@ class JSONParser {
     func titlesFromJSON(data: NSData) -> [String] {
         var titles = [String]()
         var jsonError: NSError?
-        let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as NSDictionary
         
-        if let unwrappedError = jsonError {
-            println("json error: \(unwrappedError)")
-        } else {
+        if let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? NSDictionary {
             if let feed = json["feed"] as? NSDictionary {
                 if let entries = feed["entry"] as? NSArray {
                     for entry in entries {
@@ -29,8 +26,25 @@ class JSONParser {
                     }
                 }
             }
+        } else {
+            if let unwrappedError = jsonError {
+                println("json error: \(unwrappedError)")
+            }
         }
         
+        return titles
+    }
+    
+    func badTitlesFromJSON(data: NSData) -> [String] {
+        var titles = [String]()
+        var jsonError: NSError?
+        let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as NSDictionary
+        
+        if let unwrappedError = jsonError {
+            println("json error: \(unwrappedError)")
+        } else {
+            titles = json.valueForKeyPath("feed.entry.im:name.label") as [String]
+        }
         return titles
     }
 }
