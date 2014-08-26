@@ -16,15 +16,9 @@ class ViewModel {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         let url = NSURL(string: urlString)
         let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
-            var jsonError: NSError?
-            let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as NSDictionary
-            
-            if let unwrappedError = jsonError {
-                println("json error: \(unwrappedError)")
-            } else {
-                self.titles = json.valueForKeyPath("feed.entry.im:name.label") as [String]
-                success()
-            }
+            let parser = JSONParser()
+            self.titles = parser.titlesFromJSON(data)
+            success()
         }
         task.resume()
     }
