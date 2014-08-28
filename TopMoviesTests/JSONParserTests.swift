@@ -39,9 +39,6 @@ class JSONParserTests: XCTestCase {
         let json = NSData.dataWithContentsOfFile(filePath, options: nil, error: &error)
         let titles = parser.titlesFromJSON(json)
         XCTAssert(titles.count == 0)
-        
-        let badTitles = parser.badTitlesFromJSON(json)
-        XCTAssert(badTitles.count == 0)
     }
     
     func testParseEmptyFeed() {
@@ -50,8 +47,5 @@ class JSONParserTests: XCTestCase {
         let json = NSData.dataWithContentsOfFile(filePath, options: nil, error: &error)
         let titles = parser.titlesFromJSON(json)
         XCTAssert(titles.count == 0)
-
-        let badTitles = parser.badTitlesFromJSON(json)
-        XCTAssert(badTitles.count == 0)
     }
 }
