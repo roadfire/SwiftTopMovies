@@ -21,22 +21,22 @@ class ViewController: UITableViewController {
         }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.viewModel.numberOfSections()
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.numberOfItemsInSection(section)
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         configureCell(cell, forRowAtIndexPath:indexPath)
         return cell
     }
 
     func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.textLabel.text = self.viewModel.titleForItemAtIndexPath(indexPath)
+        cell.textLabel!.text = self.viewModel.titleForItemAtIndexPath(indexPath)
     }
 }
 
