@@ -14,9 +14,16 @@ class ViewController: UITableViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.refresh()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+    }
+    
+    func refresh() {
         viewModel.fetchTitles {
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
         }
     }
