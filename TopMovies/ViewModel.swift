@@ -15,7 +15,7 @@ class ViewModel {
     func fetchTitles(success:() -> ()) {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         let url = NSURL(string: urlString)
-        let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
+        let task = session.dataTaskWithURL(url!) { (data, response, error) -> Void in
             let parser = JSONParser()
             self.titles = parser.titlesFromJSON(data)
             success()
