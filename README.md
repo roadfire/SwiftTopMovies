@@ -5,4 +5,4 @@ A Swift app to list the top movies from the iTunes RSS feed. UITableView, NSURLS
 
 ![](screenshot.png)
 
-Learn how to build it in the Beginning Swift workshop: [http://roadfiresoftware.com/learn-swift/](http://roadfiresoftware.com/learn-swift/)
+Learn how to build it in the Beginning Swift course: [http://roadfiresoftware.com/learn-swift/](http://roadfiresoftware.com/learn-swift/)
