@@ -13,7 +13,7 @@ class JSONParser {
         var titles = [String]()
         var jsonError: NSError?
         
-        if let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? NSDictionary,
+        if let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String: AnyObject],
             feed = json["feed"] as? [String: AnyObject],
             entries = feed["entry"] as? [[String: AnyObject]]
         {
