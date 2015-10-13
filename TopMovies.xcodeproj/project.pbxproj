@@ -17,6 +17,7 @@
 		0350E88519AD1A7200E72BD1 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0350E88319AD188E00E72BD1 /* JSONParser.swift */; };
 		0350E88719AD233600E72BD1 /* topmovies-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 0350E88619AD233600E72BD1 /* topmovies-empty.json */; };
 		0350E88919AD248100E72BD1 /* topmovies-empty-feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0350E88819AD248100E72BD1 /* topmovies-empty-feed.json */; };
+		03B35CA71BCDABE10019965E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03B35CA61BCDABE10019965E /* Launch Screen.storyboard */; };
 		03BDC68219AD161100E3EB37 /* topmovies.json in Resources */ = {isa = PBXBuildFile; fileRef = 03BDC68119AD161100E3EB37 /* topmovies.json */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		0350E88319AD188E00E72BD1 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		0350E88619AD233600E72BD1 /* topmovies-empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "topmovies-empty.json"; sourceTree = "<group>"; };
 		0350E88819AD248100E72BD1 /* topmovies-empty-feed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "topmovies-empty-feed.json"; sourceTree = "<group>"; };
+		03B35CA61BCDABE10019965E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		03BDC68119AD161100E3EB37 /* topmovies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = topmovies.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				0301C81C19956D9A00DED54B /* ViewModel.swift */,
 				0350E88319AD188E00E72BD1 /* JSONParser.swift */,
 				0301C8031995675B00DED54B /* Main.storyboard */,
+				03B35CA61BCDABE10019965E /* Launch Screen.storyboard */,
 				0301C8061995675B00DED54B /* Images.xcassets */,
 				0301C7FD1995675B00DED54B /* Supporting Files */,
 			);
@@ -207,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03B35CA71BCDABE10019965E /* Launch Screen.storyboard in Resources */,
 				0301C8051995675B00DED54B /* Main.storyboard in Resources */,
 				0301C8071995675B00DED54B /* Images.xcassets in Resources */,
 			);
