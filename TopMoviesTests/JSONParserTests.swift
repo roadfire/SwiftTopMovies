@@ -25,27 +25,38 @@ class JSONParserTests: XCTestCase {
     func testParseExpectedJSON() {
         let filePath = NSBundle(forClass: JSONParserTests.self).pathForResource("topmovies", ofType: "json")!
         
-        var error: NSError?
-        let json = NSData(contentsOfFile:filePath, options: nil, error: &error)
-        let titles = parser.titlesFromJSON(json!)
-        XCTAssert(titles.count == 10)
-        
-        XCTAssert(titles[0] == "Godzilla (2014)")
+        do {
+            let json = try NSData(contentsOfFile:filePath, options: [])
+            let titles = parser.titlesFromJSON(json)
+            
+            XCTAssert(titles.count == 10)
+            XCTAssert(titles[0] == "Godzilla (2014)")
+        } catch {
+            XCTFail("could not read JSON from file: \(filePath)")
+        }
     }
     
     func testParseEmptyJSON() {
         let filePath = NSBundle(forClass: JSONParserTests.self).pathForResource("topmovies-empty", ofType: "json")!
-        var error: NSError?
-        let json = NSData(contentsOfFile:filePath, options: nil, error: &error)
-        let titles = parser.titlesFromJSON(json!)
-        XCTAssert(titles.count == 0)
+
+        do {
+            let json = try NSData(contentsOfFile:filePath, options: [])
+            let titles = parser.titlesFromJSON(json)
+            XCTAssert(titles.count == 0)
+        } catch {
+            XCTFail("could not read JSON from file: \(filePath)")
+        }
     }
     
     func testParseEmptyFeed() {
         let filePath = NSBundle(forClass: JSONParserTests.self).pathForResource("topmovies-empty-feed", ofType: "json")!
-        var error: NSError?
-        let json = NSData(contentsOfFile:filePath, options: nil, error: &error)
-        let titles = parser.titlesFromJSON(json!)
-        XCTAssert(titles.count == 0)
+        
+        do {
+            let json = try NSData(contentsOfFile:filePath, options: [])
+            let titles = parser.titlesFromJSON(json)
+            XCTAssert(titles.count == 0)
+        } catch {
+            XCTFail("could not read JSON from file: \(filePath)")
+        }
     }
 }

@@ -17,7 +17,7 @@ class ViewModel {
         let url = NSURL(string: urlString)
         let task = session.dataTaskWithURL(url!) { (data, response, error) -> Void in
             let parser = JSONParser()
-            self.titles = parser.titlesFromJSON(data)
+            self.titles = parser.titlesFromJSON(data!)
             success()
         }
         task.resume()
